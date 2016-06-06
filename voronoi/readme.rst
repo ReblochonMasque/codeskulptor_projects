@@ -1,7 +1,7 @@
 Voronoi Diagram
 ===============
 
-This experiment draws a `colored voronoi diagram http://www.codeskulptor.org/#user41_fXerGg8nRY_2.py`_ and allows to capture the final result as a png image (although it will need to be saved manually).
+This experiment draws a `colored voronoi diagram <http://www.codeskulptor.org/#user41_fXerGg8nRY_2.py>`_ and allows to capture the final result as a png image (although it will need to be saved manually).
 
 The implementation is very naive: for each pixel it calculates which cell center is closest and colors it.
 
