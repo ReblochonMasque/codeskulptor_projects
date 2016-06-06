@@ -1,0 +1,105 @@
+"""
+voronoi.py
+Voronoi Diagram
+http://www.codeskulptor.org/#user41_fXerGg8nRY_2.py
+"""
+
+import codeskulptor
+from random import randrange
+import math
+import simplegui
+
+
+codeskulptor.set_timeout(300)
+
+
+class Voronoi:
+    """
+    calculates and draws voronoi diagrams in a naive way
+    """
+
+    def __init__(self, width = 100, height = 50):
+        self._width  = width
+        self._height = height
+        self._image = {}
+        self._cell_centers = {}
+
+        self._number_of_cells = randrange(50, 101)
+        self._pixel_x = [randrange(0, self._width)  for _ in range(self._number_of_cells)]
+        self._pixel_y = [randrange(0, self._height) for _ in range(self._number_of_cells)]
+        self._red = [randrange(0, 255) for _ in range(self._number_of_cells)]
+        self._green = [randrange(0, 255) for _ in range(self._number_of_cells)]
+        self._blue = [randrange(0, 255) for _ in range(self._number_of_cells)]
+
+        self._make_centers()  # so gui has access to the number of cells
+        self._setup_gui()
+        self.make_voronoy()
+        self._frame.start()
+
+    def _setup_gui(self):
+        self._frame = simplegui.create_frame("Voronoy", self._width, self._height, 220)
+        self._frame.set_canvas_background("Transparent")
+        self._frame.set_draw_handler(self._draw)
+        self._frame.set_canvas_background("Transparent")
+        self._frame.add_button("Get Image", self._get_image)
+        label_1_text = "Image size =  %s x %s" % (self._width, self._height)
+        label_2_text = "Number of cells =  %s" % len(self._cell_centers)
+        self._label_0 = self._frame.add_label("", 100)
+        self._label_1 = self._frame.add_label(label_1_text, 200)
+        self._label_00 = self._frame.add_label("", 100)
+        self._label_2 = self._frame.add_label(label_2_text, 200)
+
+    def _make_centers(self):
+        "generates the random coordinates of a random number of cell centers"
+        self._cell_centers = dict(((self._pixel_x[idx], self._pixel_y[idx]),
+                                  self._make_rgb_string(idx))
+                                  for idx in range(self._number_of_cells))
+
+    def tick(self):
+        if self.worker is not None:
+            try:
+                self.worker.next()
+            except:
+                self.worker = None
+                self.timer.stop()
+
+    def make_voronoy(self):
+        self.timer = simplegui.create_timer(1, self.tick)
+        self.worker = self._make_voronoy()
+        self.timer.start()
+
+    def _make_voronoy(self):
+        "calculates the voronoi areas and colors each cell"
+        for pix_y in range(self._height):
+            for pix_x in range(self._width):
+                distance_min = math.hypot(self._width, self._height)
+                jdx = -1
+                for idx in range(self._number_of_cells):
+                    distance = math.hypot(self._pixel_x[idx] - pix_x,
+                                          self._pixel_y[idx] - pix_y)
+                    if distance < distance_min:
+                        distance_min = distance
+                        jdx = idx
+
+                self._image[(pix_x, pix_y)] = self._make_rgb_string(jdx)
+            yield
+
+    def _make_rgb_string(self, idx):
+        "helper to generate a random rgb color string"
+        return "".join(["rgb(", ', '.join([str(255 - self._red[idx]), str(255 - self._green[idx]), str(255 - self._blue[idx])]), ")"])
+
+    def _get_image(self):
+        "button handler to get an image of the canvas"
+        self._frame.get_canvas_image()
+
+    def _draw(self, canvas):
+        for point, rgb_string in self._image.items():
+            canvas.draw_point(point, rgb_string)
+        self._image = {}
+
+        for point, rgb_string in self._cell_centers.items():
+            canvas.draw_circle(point, 2, 1, "White", "Black")
+
+
+Voronoi(250, 250)
+
