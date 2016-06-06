@@ -1,3 +1,4 @@
+===============
 Voronoi Diagram
 ===============
 
@@ -12,3 +13,4 @@ The use of a dictionary to contain the image definition is not mandatory - I cho
 .. image:: ./resources/Voronoi-Diagram-squares---offset-_-10---250-x-250.png
 
 .. image:: ./resources/voronoi-Diagram-500-x-500.png
+
