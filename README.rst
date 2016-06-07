@@ -26,3 +26,15 @@ MVC pattern for Rock Paper Scissors Lizard Spock
 Using the `observer.Publisher class <https://github.com/ReblochonMasque/codeskulptor_projects/blob/master/observer_pattern/observer.py>`_, implements a game of RPSLS with the observer pattern and outputs the outcome both in console and on a GUI canvas.
 
 .. image:: ./RPSLS_MVC/resources/RPSLS_GUI.png
+
+MVC pattern for Guess The Number Game
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using the `observer.Publisher class <https://github.com/ReblochonMasque/codeskulptor_projects/blob/master/observer_pattern/observersimple.py>`_, implements a game of **Guess The Number** with the observer pattern and outputs the outcome both in console and on a GUI canvas.
+The GUI provides hints on demand and shows an animated graphical representation of a binary search.
+
+.. image:: ./Guess_The_Number_with_MVC_Pattern/resources/GTN_GUI.png
+    :width: 400px
+    :align: center
+    :height: 300px
+    :alt: GTN GUI screenshot
