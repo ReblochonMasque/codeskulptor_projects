@@ -21,7 +21,7 @@ Observer pattern
 - `Publisher class <https://github.com/ReblochonMasque/codeskulptor_projects/blob/master/observer_pattern/observer.py>`_ --> elaborate/complex: various types of callbacks, different args and kwargs
 - `Publisher class <https://github.com/ReblochonMasque/codeskulptor_projects/blob/master/observer_pattern/observersimple.py>`_ --> simple: one type of callback, one type of args 
 
-MVC pattern for Rock Paper Scisors Lizard Spock
+MVC pattern for Rock Paper Scissors Lizard Spock
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Using the `observer.Publisher class <https://github.com/ReblochonMasque/codeskulptor_projects/blob/master/observer_pattern/observer.py>`_, implements a game of RPSLS with the observer pattern and outputs the outcome both in console and on a GUI canvas.
 
