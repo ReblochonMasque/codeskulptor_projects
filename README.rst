@@ -38,3 +38,13 @@ The GUI provides hints on demand and shows an animated graphical representation 
     :align: center
     :height: 300px
     :alt: GTN GUI screenshot
+
+Slope Field
+^^^^^^^^^^^
+
+prototype that opens the possibility to enrich **`simpleplot <http://www.codeskulptor.org/docs.html#tabs-Python>`_ **'s limited capabilities.
+It draws the slope field of a separable ordinary differential equation of the form: dy/dx=f(x,y)
+
+It uses forward Euler integration to draw a set of solutions on the slope field
+
+.. image:: ./slope_field/resources/Simpleplot-Slope-Field-with-solutions.png
